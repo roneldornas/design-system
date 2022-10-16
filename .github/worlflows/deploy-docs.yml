@@ -1,8 +1,8 @@
-name: Deploy Storybooks
+name: Deploy Storybook
 
 on:
   push:
-    branch:
+    branches:
       - master
 
 jobs:
@@ -17,11 +17,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      
-      - name: Install dependencies
-        run: npm ci
 
-      - name: Build Storyboiok
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build Storybook
         run: npm run build-storybook
 
       - name: Deploy Storybook
